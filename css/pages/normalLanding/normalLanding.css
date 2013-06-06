@@ -1,0 +1,201 @@
+/*****************************************************************************************************************
+ * Start of File
+ ****************************************************************************************************************/
+/* Button Styling */
+html, body {
+  font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+html > body{
+  min-height: 740px;
+  /*background-color: #808080;*/
+  background-color: #444;
+  /*background-image: url('../../../images/pages/common/background.png');*/
+}
+
+/* for site header - put in separate file so we can use in all pages? */
+#logo{
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  margin:0;
+  padding:0;
+  width: 100%;
+  height: 80px; /* height of logo */
+  background:url('../../../images/pages/common/header.png') top left repeat-x;
+  opacity: 0.9;
+}
+
+/* for breadcrumbs */
+#breadCrumb0{
+  top:80px;
+  left:0px;
+  right:0px;
+  margin:0;
+  padding:0;
+  width: 100%;
+  position:relative;
+}
+
+/* page contents */
+/* 960 style containers */
+.container_2{
+  top: 103px; /* adjust for logo and breadcrumbs */
+  position:relative; /* for banner */
+  /*background-color: #c4c4c4;*/
+  padding: 0px 5px 0px 5px;
+  min-height: 630px;
+}
+
+.grid_1{
+  min-height:500px; /* maintain minimum height */
+  height:auto !important; /* maintain minimum height */
+  height:500px; /* maintain minimum height */
+}
+
+/**************
+ * left half
+ **************/
+.leftHolderDiv{
+  min-height:500px;
+}
+
+#loadingDiv{
+  display: none;
+  padding-top: 200px;
+  text-align: center;
+  min-height: 200px;
+  height:200px;
+  max-height:200px;
+}
+
+div#tabs{
+  height:585px;
+  width:100%;
+}
+
+#mapDiv{ /* specify explicit height for Google Maps */
+  min-height:500px; /* maintain minimum height - same as .grid_1 */
+  height:auto !important; /* maintain minimum height - same as .grid_1 */
+  height:500px; /* maintain minimum height - same as .grid_1 */
+}
+
+#graphDiv{ /* specify explicit height for Graphs as required by Google Maps */
+  width:100%;
+  min-height:535px; /* fit HighCharts into the tab */
+  height:535px; /* fit HighCharts into the tab */
+  max-height:535px; /* fit HighCharts into the tab */
+  padding:0px;
+}
+
+#queryDiv{
+  float: left;
+  margin-left: 5px;
+  margin-right: 0px;
+  width: 500px; /* raj decreasing this to give mapGraphDiv more lebensraum */
+}
+
+#mapGraphDiv{
+  /*background-color: #ededed;
+  min-height: 592px;*/
+  float: right;
+  margin-right: 5px;
+  margin-left: 0px;
+  width: 680px; /* raj increasing this to give the graph more lebensraum */
+}
+
+#mapGraphDiv, #queryDiv{
+  -webkit-box-shadow: 0px 0px 20px 5px #8A8A8A;
+}
+
+
+
+/**************
+ * right half
+ **************/
+.rightHolderDiv{
+  /*position: relative;
+  width: 100%;
+  display: block;*/
+}
+
+.rightHolderToggleDiv{
+  min-height:250px; /* maintain minimum height - less than .grid_1 */
+  height:auto !important; /* maintain minimum height - less than .grid_1 */
+  height:250px; /* maintain minimum height - less than .grid_1 */
+}
+
+.ui-widget{
+  font-size: 17px;
+  line-height: 2em;
+}
+
+#selectTable{
+  margin-left: auto;
+  margin-right: auto;
+  width: 480px;
+  min-width: 480px;
+  max-width: 480px;
+}
+
+.inputField{
+  min-width:210px;
+  width:210px;
+  max-width:210px;
+}
+
+#customTabularSQLInput{
+  width:450px; /* raj - decreasing this after queryDiv width was decreased to 500px */
+  height:250px;
+}
+
+/* buttons */
+.fg-button{
+  margin: 10px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+#tabularDiv {
+overflow:scroll;
+height:50px;
+}
+
+tr#graphDates,
+tr#graphWards,
+div#mapPresetFrontBackBtnDiv,
+div#mapCustomFrontBackBtnDiv,
+div#graphPresetFrontBackBtnDiv,
+div#graphCustomFrontBackBtnDiv,
+div#tabularPresetFrontBackBtnDiv,
+div#tabularCustomDropDownFrontBackBtnDiv,
+div#tabularCustomBackBtnDiv,
+div#tabularCustomSQLFrontBackBtnDiv,
+div#presetMapQueryHolderDiv,
+div#customMapQueryHolderDiv,
+div#presetGraphQueryHolderDiv,
+div#customGraphQueryHolderDiv,
+div#presetTabularQueryHolderDiv,
+div#tabularCustomDropDownORSQLDiv,
+div#customTabularDropDownDiv,
+div#customTabularSQLDiv,
+div#selectColsDiv,
+div#selectFiltersDiv{
+  /*width:100%;*/
+  display: none; /*show only when required*/
+}
+
+.backBtn{
+  float: left;
+}
+
+.frontBtn{
+  float: right;
+}
+/*****************************************************************************************************************
+ * EOF
+ ****************************************************************************************************************/

@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui-themes-1.8.18/themes/flick/jquery.ui.all.css"/> <!-- jQuery UI CSS framework -->
+  <link rel="stylesheet" type="text/css" href="css/pages/normalLanding/normalLanding960.css"/> <!-- Grid CSS for this page -->
+  <link rel="stylesheet" type="text/css" href="css/pages/normalLanding/normalLanding.css"/> <!-- CSS for this page -->
+
+  <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script> <!-- jQuery -->
+  <script src="js/Highcharts/js/highcharts.js"></script> <!-- Graphs Library -->
+  <script src="js/Highcharts/js/modules/exporting.js"></script> <!-- Graphs Library Printing/Downloading as image -->
+  <script src="js/DCCharts/DCChart.js"></script> <!-- DCChart Library -->
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCygG-ip-lkeRJBQA5N7PMgOncEteF8I2A&sensor=false" type="text/javascript"></script> <!-- Google Maps API -->
+  <script src="js/jquery-ui-1.8.18/jquery.ui.core.js"></script> <!-- jQuery UI Library -->
+  <script src="js/jquery-ui-1.8.18/jquery.ui.widget.js"></script> <!-- jQuery UI Library -->
+  <script src="js/jquery-ui-1.8.18/jquery.ui.button.js"></script> <!-- jQuery UI Library -->
+  <script src="js/jquery-ui-1.8.18/jquery.ui.tabs.js"></script> <!-- jQuery UI Library -->
+  <script src="js/jquery-ui-1.8.18/jquery.ui.datepicker.js"></script> <!-- jQuery UI Library -->
+  <script src="js/pages/normalLanding/normalLanding.js"></script> <!-- JS functionality for this page -->
+
+  <script type="text/javascript" src="js/breadCrumbs/jquery.easing.1.3.js"></script> <!-- Breadcrumbs -->
+  <script type="text/javascript" src="js/breadCrumbs/jquery.jBreadCrumb.1.1.js"></script> <!-- Breadcrumbs -->
+  <link rel="stylesheet" type="text/css" href="css/breadCrumbs/Styles/Base.css" media="screen"/> <!-- Breadcrumbs -->
+  <link rel="stylesheet" type="text/css" href="css/breadCrumbs/Styles/BreadCrumb.css" media="screen"/> <!-- Breadcrumbs -->
+
+  <title>Home</title>
+</head>
+
+<body>
+  <div id="logo">
+  </div> <!-- end of logo -->
+
+  <div id="breadCrumb0" class="breadCrumb module"> <!-- crumbs for messy eaters -->
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="loginPage.html">Logout</a></li>
+    </ul>
+  </div> <!-- end of breadCrumb0 -->
+
+  <div class="container_2"> <!-- main div that holds everything -->
+
+    <div class="grid_1 alpha" id="queryDiv"> <!-- left half div -->
+      <div id="tabs"> <!-- Maps/Graphs/Tabular Queries tabbed navigation -->
+        <ul>
+          <li><a href="#queryMapDiv">Map Queries</a></li>
+          <li><a href="#queryGraphDiv">Graph Queries</a></li>
+          <li><a href="#queryTabularDiv">Tabular Queries</a></li>
+        </ul>
+        <div class="rightHolderDiv" id="queryMapDiv"> <!-- Queries for maps. If you change the 960 layout, you MUST update the height of this element in normalLanding.css because it has been set explicitly as required by Google Maps -->
+          <div style="position: relative; height: 100%; width: 100%;"> <!-- for center vertical alignment of buttons -->
+
+            <div class="rightHolderDiv" id="mapButtonHolderDiv">
+              <center>
+                <p><button class="fg-button ui-state-default ui-corner-all" type="submit" id="presetMapBtn">See Preset Map Queries</button></p>
+                <p><button class="fg-button ui-state-default ui-corner-all" type="submit" id="customMapBtn">Create Custom Map Queries</button></p>
+              </center>
+            </div> <!-- end of mapButtonHolderDiv -->
+
+            <div class="rightHolderDiv" id="presetMapQueryHolderDiv">
+              <center>
+                <h6>Choose a preset map query</h6>
+                <table id="selectMapTable">
+                  <tbody>
+                    <tr>
+                      <td width="100%">
+                        <select id="presetMapQueryComboBox">
+                          <option value="">Select One...</option>
+                          <option value="1">Concentration of Crimes - 1st quarter</option>
+                          <option value="2">Concentration of Crimes - 2nd quarter</option>
+                          <option value="3">Concentration of Crimes - 3rd quarter</option>
+                          <option value="4">Concentration of Crimes - 4th quarter</option>
+                          <option value="5">Concentration of Crimes - 2011</option>
+                          <option value="6">Highest Crimes at the same Spot on Mondays</option>
+                          <option value="7">Highest Crimes at the same Spot on Tuesdays</option>
+						  <option value="8">Highest Crimes at the same Spot on Wednesdays</option>
+                          <option value="9">Highest Crimes at the same Spot on Thursdays</option>
+						  <option value="10">Highest Crime at the same Spot on Fridays</option>
+						  <option value="11">PSA with the least crimes</option>
+						  <option value="12">PSA with the highest crimes</option>
+						  <option value="13">Ward with the least crimes</option>
+						  <option value="14">Ward with the highest crimes</option>					  
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </center>
+            </div> <!-- end of presetMapQueryHolderDiv -->
+
+            <div class="rightHolderDiv" id="customMapQueryHolderDiv">
+              <center>
+                <h6>Create your own map query</h6>
+                <table id="mapQueryTable">
+                  <tr>
+                    <td width="50%" style="text-align:center;"><label>Type of Crime</label></td>
+                    <td width="50%"><select id="mapCrimeTypeComboBox" >
+                      <option value="">All</option>
+                      <option value="ARSON">Arson</option>
+                      <option value="THEFT F/AUTO">Theft From Auto</option>
+                      <option value="STOLEN AUTO">Stolen Auto</option>
+                      <option value="THEFT">Theft</option>
+                      <option value="ROBBERY">Robbery</option>
+                      <option value="HOMICIDE">Homicide</option>
+                      <option value="SEX ABUSE">Sex Abuse</option>
+                      <option value="ADW">Assault With Deadly Weapon</option>
+                      <option value="BURGLARY">Burglary</option>
+                    </select></td>
+                  </tr>
+
+                  <tr></tr>
+
+                  <tr><td width="50%" style="text-align:center;">Date</td><td width="50%"> <input type="text" class="inputField" id="mapFromDate"><center>TO</center><input type="text" class="inputField" id="mapToDate"></td></tr>
+
+                  <tr></tr>
+
+                  <tr><td width="50%" style="text-align:center;"><label>PSA ID</label></td>
+                    <td width="50%"><select id="mapPsaIDComboBox" class="inputField">
+                      <option value="">All</option>
+                      <option value="101">PSA 101</option>
+                      <option value="102">PSA 102</option>
+                      <option value="103">PSA 103</option>
+                      <option value="104">PSA 104</option>
+                      <option value="105">PSA 105</option>
+                      <option value="106">PSA 106</option>
+                      <option value="107">PSA 107</option>
+                      <option value="108">PSA 108</option>
+                      <option value="201">PSA 201</option>
+                      <option value="202">PSA 202</option>
+                      <option value="203">PSA 203</option>
+                      <option value="204">PSA 204</option>
+                      <option value="205">PSA 205</option>
+                      <option value="206">PSA 206</option>
+                      <option value="207">PSA 207</option>
+                      <option value="208">PSA 208</option>
+                      <option value="301">PSA 301</option>
+                      <option value="302">PSA 302</option>
+                      <option value="303">PSA 303</option>
+                      <option value="304">PSA 304</option>
+                      <option value="305">PSA 305</option>
+                      <option value="306">PSA 306</option>
+                      <option value="307">PSA 307</option>
+                      <option value="308">PSA 308</option>
+                      <option value="401">PSA 401</option>
+                      <option value="402">PSA 402</option>
+                      <option value="403">PSA 403</option>
+                      <option value="404">PSA 404</option>
+                      <option value="405">PSA 405</option>
+                      <option value="406">PSA 406</option>
+                      <option value="407">PSA 407</option>
+                      <option value="408">PSA 408</option>
+                      <option value="409">PSA 409</option>
+                      <option value="501">PSA 501</option>
+                      <option value="502">PSA 502</option>
+                      <option value="503">PSA 503</option>
+                      <option value="504">PSA 504</option>
+                      <option value="505">PSA 505</option>
+                      <option value="506">PSA 506</option>
+                      <option value="507">PSA 507</option>
+                      <option value="601">PSA 601</option>
+                      <option value="602">PSA 602</option>
+                      <option value="603">PSA 603</option>
+                      <option value="604">PSA 604</option>
+                      <option value="605">PSA 605</option>
+                      <option value="606">PSA 606</option>
+                      <option value="607">PSA 607</option>
+                      <option value="608">PSA 608</option>
+                      <option value="701">PSA 701</option>
+                      <option value="702">PSA 702</option>
+                      <option value="703">PSA 703</option>
+                      <option value="704">PSA 704</option>
+                      <option value="705">PSA 705</option>
+                      <option value="706">PSA 706</option>
+                      <option value="707">PSA 707</option>
+                      <option value="708">PSA 708</option>
+                    </select></td>
+                  </tr>
+
+                  <tr><td width="50%" style="text-align:center;"><label>Ward ID</label></td>
+                    <td width="50%"><select id="mapWardIDComboBox" class="inputField">
+                      <option value="">All</option>
+                      <option value="1">Ward 1</option>
+                      <option value="2">Ward 2</option>
+                      <option value="3">Ward 3</option>
+                      <option value="4">Ward 4</option>
+                      <option value="5">Ward 5</option>
+                      <option value="6">Ward 6</option>
+                      <option value="7">Ward 7</option>
+                      <option value="8">Ward 8</option>
+                    </select></td>
+                  </tr>
+
+                </table>
+              </center>
+
+            </div> <!-- end of customMapQueryHolderDiv -->
+
+            <div id="mapPresetFrontBackBtnDiv">
+              <button class="fg-button ui-state-default ui-corner-all mapBackBtn" type="submit">Go Back</button>
+              <button class="fg-button ui-state-default ui-corner-all frontBtn" type="submit" id="showPresetMapBtn">Show on Map</button>
+            </div> <!-- end of mapPresetFrontBackBtnDiv -->
+
+            <div id="mapCustomFrontBackBtnDiv">
+              <button class="fg-button ui-state-default ui-corner-all mapBackBtn" type="submit">Go Back</button>
+              <button class="fg-button ui-state-default ui-corner-all frontBtn" type="submit" id="showCustomMapBtn">Show on Map</button>
+            </div> <!-- end of mapCustomFrontBackBtnDiv -->
+
+          </div> <!-- end of div for center vertical alignment of buttons -->
+        </div> <!-- end of queryMapDiv -->
+
+        <div class="rightHolderDiv" id="queryGraphDiv"> <!-- queries for graphs -->
+          <div style="position: relative; height: 100%; width: 100%;"> <!-- for center vertical alignment of buttons -->
+
+            <div class="rightHolderDiv" id="graphButtonHolderDiv">
+              <center>
+                <p><button class="fg-button ui-state-default ui-corner-all" type="submit" id="presetGraphBtn">See Preset Graph Queries</button></p>
+                <p><button class="fg-button ui-state-default ui-corner-all" type="submit" id="customGraphBtn">Create Custom Graph Queries</button></p>
+              </center>
+            </div> <!-- end of graphButtonHolderDiv -->
+
+            <div class="rightHolderDiv" id="presetGraphQueryHolderDiv">
+              <center>
+                <h6>Choose a preset graph query</h6>
+                <table id="selectGraphTable">
+                  <tbody>
+                    <tr>
+                      <td width="100%">
+                        <select id="presetGraphQueryComboBox">
+                          <option value="">Select One...</option>
+                          <option value="1">Total Crimes Per Month - Line Graph</option>
+                          <option value="2">Individual Crimes per month</option>
+                          <option value="3">Crime vs Population per ward</option>
+                          <option value="4">Total Crimes Per Month - Bar Graph</option>
+                          <option value="5">Highest types of crimes per month - Bar Graph</option>
+                          <option value="6">Lowest types of crimes per month - Bar Graph</option>
+						  <option value="7">Percentages of crimes per ward - Pie Chart</option>						  
+						  <option value="8">The Ten most Crime Prone Addresses</option>
+						  <option value="9">Crime Based on Count Type and Address</option>
+						  <option value="10">Highest Crime Count by Type Daywise</option>
+						  <option value="11">The Highest Crime PSA in Lowest Crime Ward</option>
+						  <option value="12">Longest Crime Free Duration</option>
+						  <option value="13">The Highest Crime PSA in the Lowest Crime Ward</option>
+						  <option value="14">Income and Crime Comparison - PSA</option>
+						  <option value="15">Poverty and Crime Comparison - PSA</option>
+						  <option value="16">Time Line of Crime</option>
+						  <option value="17">Income and Crime & Unemployment Comparison - WARD</option>
+						  <option value="18">Poverty and Crime Comparison - WARD</option>
+						  <option value="19">Crime on Weekdays</option>
+						  
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </center>
+            </div> <!-- end of presetGraphQueryHolderDiv -->
+
+            <div class="rightHolderDiv" id="customGraphQueryHolderDiv">
+              <center>
+                <h6>Create your own graph query</h6>
+                <table id="graphQueryTable">
+                  <tr>
+                    <td width="50%" style="text-align:center;"><label>Category 1</label></td>
+                    <td width="50%"><select multiple="multiple" id="graphYAxisComboBox">
+                      <option value="" selected>Select type of crime (ctrl-select for multiple)...</option>
+                      <option value="ALL">All</option>
+                      <option value="ADW">Assault With Deadly Weapon</option>
+                      <option value="ARSON">Arson</option>
+                      <option value="BURGLARY">Burglary</option>
+                      <option value="HOMICIDE">Homicide</option>
+                      <option value="ROBBERY">Robbery</option>
+                      <option value="SEX ABUSE">Sex Abuse</option>					  
+                      <option value="STOLEN AUTO">Stolen Auto</option>
+                      <option value="THEFT">Theft</option>
+                      <option value="THEFT F/AUTO">Theft From Auto</option>
+                    </select></td>
+                  </tr>
+
+                  <tr></tr>
+
+                  <tr>
+                    <td width="50%" style="text-align:center;"><label>Category 2</label></td>
+                    <td width="50%"><select id="graphXAxisComboBox">
+                      <option value="" selected>Select one...</option>
+                      <option value="DATE">Dates</option>
+                      <option value="WARD">Wards</option>
+                    </select></td>
+                  </tr>
+
+                  <tr id="graphDates"><td width="50%" style="text-align:center;">Date</td><td width="50%"> <input type="text" class="inputField" id="graphFromDate">TO<input type="text" class="inputField" id="graphToDate"></td></tr>
+
+                  <tr></tr>
+
+                  <tr id="graphWards">
+                    <td width="50%" style="text-align:center;"><label>Ward ID</label></td>
+                    <td width="50%"><select multiple="multiple" id="graphWardIDComboBox">
+                      <option value="" selected>Select wards (ctrl-select for multiple)...</option>
+                      <option value="ALL">All</option>
+                      <option value="1">Ward 1</option>
+                      <option value="2">Ward 2</option>
+                      <option value="3">Ward 3</option>
+                      <option value="4">Ward 4</option>
+                      <option value="5">Ward 5</option>
+                      <option value="6">Ward 6</option>
+                      <option value="7">Ward 7</option>
+                      <option value="8">Ward 8</option>
+                    </select></td>
+                  </tr>
+
+                </table>
+              </center>
+
+            </div> <!-- end of customGraphQueryHolderDiv -->
+
+            <div id="graphPresetFrontBackBtnDiv">
+              <button class="fg-button ui-state-default ui-corner-all graphBackBtn" type="submit">Go Back</button>
+              <button class="fg-button ui-state-default ui-corner-all frontBtn" type="submit" id="showPresetGraphBtn">Show on Graph</button>
+            </div>
+
+            <div id="graphCustomFrontBackBtnDiv">
+              <button class="fg-button ui-state-default ui-corner-all graphBackBtn" type="submit">Go Back</button>
+              <button class="fg-button ui-state-default ui-corner-all frontBtn" type="submit" id="showCustomGraphBtn">Show on Graph</button>
+            </div>
+
+          </div> <!-- end of div for center vertical alignment of buttons -->
+        </div> <!-- end of queryGraphDiv -->
+
+        <div class="rightHolderDiv" id="queryTabularDiv"> <!-- queries for tabular output -->
+          <div style="position: relative; height: 100%; width: 100%;"> <!-- for center vertical alignment of buttons -->
+
+            <div class="rightHolderDiv" id="tabularButtonHolderDiv">
+              <center>
+                <p><button class="fg-button ui-state-default ui-corner-all" type="submit" id="presetTabularBtn">See Preset Tabular Queries</button></p>
+                <p><button class="fg-button ui-state-default ui-corner-all" type="submit" id="customTabularBtn">Create Custom Tabular Queries</button></p>
+              </center>
+            </div> <!-- end of tabularButtonHolderDiv -->
+
+            <div class="rightHolderDiv" id="presetTabularQueryHolderDiv">
+              <center>
+                <h6>Choose a preset tabular query</h6>
+                <table id="selectTabularTable">
+                  <tbody>
+                    <tr>
+                      <td width="100%">
+                        <select id="presetTabularQueryComboBox">
+                          <option value="0">Select One...</option>
+                          <option value="1">Different types of crime</option>
+                          <option value="2">Which are the different wards?</option>
+                          <option value="3">Which are the different PSAs?</option>
+                          <option value="4">Which PSA belongs to which ward?</option>
+                          <option value="5">How many people are in poverty in each ward?</option>
+                          <option value="6">How many people are in poverty in each PSA?</option>
+                          <option value="7">How many are unemployed in each ward?</option>
+						  <option value="8">How many are unemployed in each PSA?</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </center>
+            </div> <!-- end of presetTabularQueryHolderDiv -->
+
+            <div class="rightHolderDiv" id="tabularCustomDropDownORSQLDiv">
+              <center>
+                <p><button class="fg-button ui-state-default ui-corner-all" type="submit" id="customTabularBtnDropDown">Select from drop-down boxes</button></p>
+                <p><button class="fg-button ui-state-default ui-corner-all" type="submit" id="customTabularBtnSQL">Type in your own SQL</button></p>
+              </center>
+            </div> <!-- end of tabularCustomDropDownORSQLDiv -->
+
+            <div class="rightHolderDiv" id="customTabularSQLDiv">
+			<!-- Button: Show DB Schema -->
+			<button class="fg-button ui-state-default ui-corner-all db_schema_show" title="Show DB Schema"><img src="images/pages/common/icon_helper.png"/></button>
+              <center>
+                <h5 style="color:gray">Enter your SQL query in the box below</h5>
+                <textarea align="top" type='text' id="customTabularSQLInput"></textarea>
+              </center>
+            </div> <!-- end of customTabularSQLDiv -->
+
+            <div class="rightHolderDiv" id="customTabularDropDownDiv">
+              <center>
+                <h6>Create your own tabular query</h6>
+                <table id="tabularQueryTable">
+                  <tr>
+                    <td width="50%" style="text-align:center;"><label>Type of Crime</label></td>
+                    <td width="50%"><select id="tabularCrimeTypeComboBox" >
+                      <option value="">All</option>
+                      <option value="ARSON">Arson</option>
+                      <option value="THEFT F/AUTO">Theft From Auto</option>
+                      <option value="STOLEN AUTO">Stolen Auto</option>
+                      <option value="THEFT">Theft</option>
+                      <option value="ROBBERY">Robbery</option>
+                      <option value="HOMICIDE">Homicide</option>
+                      <option value="SEX ABUSE">Sex Abuse</option>
+                      <option value="ADW">Assault With Deadly Weapon</option>
+                      <option value="BURGLARY">Burglary</option>
+                    </select></td>
+                  </tr>
+
+                  <tr></tr>
+
+                  <tr><td width="50%" style="text-align:center;">Date</td><td width="50%"> <input type="text" class="inputField" id="tabularFromDate"><center>TO</center><input type="text" class="inputField" id="tabularToDate"></td></tr>
+
+                  <tr></tr>
+
+                  <tr><td width="50%" style="text-align:center;"><label>PSA ID</label></td>
+                    <td width="50%"><select id="tabularPsaIDComboBox" class="inputField">
+                      <option value="">All</option>
+                      <option value="101">PSA 101</option>
+                      <option value="102">PSA 102</option>
+                      <option value="103">PSA 103</option>
+                      <option value="104">PSA 104</option>
+                      <option value="105">PSA 105</option>
+                      <option value="106">PSA 106</option>
+                      <option value="107">PSA 107</option>
+                      <option value="108">PSA 108</option>
+                      <option value="201">PSA 201</option>
+                      <option value="202">PSA 202</option>
+                      <option value="203">PSA 203</option>
+                      <option value="204">PSA 204</option>
+                      <option value="205">PSA 205</option>
+                      <option value="206">PSA 206</option>
+                      <option value="207">PSA 207</option>
+                      <option value="208">PSA 208</option>
+                      <option value="301">PSA 301</option>
+                      <option value="302">PSA 302</option>
+                      <option value="303">PSA 303</option>
+                      <option value="304">PSA 304</option>
+                      <option value="305">PSA 305</option>
+                      <option value="306">PSA 306</option>
+                      <option value="307">PSA 307</option>
+                      <option value="308">PSA 308</option>
+                      <option value="401">PSA 401</option>
+                      <option value="402">PSA 402</option>
+                      <option value="403">PSA 403</option>
+                      <option value="404">PSA 404</option>
+                      <option value="405">PSA 405</option>
+                      <option value="406">PSA 406</option>
+                      <option value="407">PSA 407</option>
+                      <option value="408">PSA 408</option>
+                      <option value="409">PSA 409</option>
+                      <option value="501">PSA 501</option>
+                      <option value="502">PSA 502</option>
+                      <option value="503">PSA 503</option>
+                      <option value="504">PSA 504</option>
+                      <option value="505">PSA 505</option>
+                      <option value="506">PSA 506</option>
+                      <option value="507">PSA 507</option>
+                      <option value="601">PSA 601</option>
+                      <option value="602">PSA 602</option>
+                      <option value="603">PSA 603</option>
+                      <option value="604">PSA 604</option>
+                      <option value="605">PSA 605</option>
+                      <option value="606">PSA 606</option>
+                      <option value="607">PSA 607</option>
+                      <option value="608">PSA 608</option>
+                      <option value="701">PSA 701</option>
+                      <option value="702">PSA 702</option>
+                      <option value="703">PSA 703</option>
+                      <option value="704">PSA 704</option>
+                      <option value="705">PSA 705</option>
+                      <option value="706">PSA 706</option>
+                      <option value="707">PSA 707</option>
+                      <option value="708">PSA 708</option>
+                    </select></td>
+                  </tr>
+
+                  <tr><td width="50%" style="text-align:center;"><label>Ward ID</label></td>
+                    <td width="50%"><select id="tabularWardIDComboBox" class="inputField">
+                      <option value="">All</option>
+                      <option value="1">Ward 1</option>
+                      <option value="2">Ward 2</option>
+                      <option value="3">Ward 3</option>
+                      <option value="4">Ward 4</option>
+                      <option value="5">Ward 5</option>
+                      <option value="6">Ward 6</option>
+                      <option value="7">Ward 7</option>
+                      <option value="8">Ward 8</option>
+                    </select></td>
+                  </tr>
+
+                </table>
+              </center>
+            </div> <!-- end of customTabularDropDownDiv -->
+
+            <div id="tabularPresetFrontBackBtnDiv">
+              <button class="fg-button ui-state-default ui-corner-all tabularBackBtn" type="submit">Go Back</button>
+              <button class="fg-button ui-state-default ui-corner-all frontBtn" type="submit" id="showPresetTabularBtn">Show Tabular Output</button>
+            </div>
+			
+			<div id="tabularCustomBackBtnDiv">
+              <button class="fg-button ui-state-default ui-corner-all tabularBackBtn" type="submit">Go Back</button>
+            </div>
+
+            <div id="tabularCustomDropDownFrontBackBtnDiv">
+              <button class="fg-button ui-state-default ui-corner-all tabularBackBtn" type="submit">Go Back</button>
+              <button class="fg-button ui-state-default ui-corner-all frontBtn" type="submit" id="showCustomDropDownTabularBtn">Show Tabular Output</button>
+            </div> <!-- end of tabularCustomDropDownFrontBackBtnDiv -->
+
+            <div id="tabularCustomSQLFrontBackBtnDiv">
+              <button class="fg-button ui-state-default ui-corner-all tabularBackBtn" type="submit">Go Back</button>
+              <button class="fg-button ui-state-default ui-corner-all frontBtn" type="submit" id="showCustomSQLTabularBtn">Show Tabular Output</button>
+            </div> <!-- end of tabularCustomSQLFrontBackBtnDiv -->
+
+          </div> <!-- end of div for center vertical alignment of buttons -->
+        </div> <!-- end of queryTabularDiv -->
+
+      </div> <!-- end of tabs -->
+    </div> <!-- end of queryDiv -->
+
+    <div class="grid_1 omega" id="mapGraphDiv"> <!-- right half div -->
+      <div id="tabs"> <!-- Maps/Graphs/Tabular tabbed navigation -->
+        <ul>
+          <li><a href="#mapDiv">Map Output</a></li>
+          <li><a href="#graphDiv">Graph Output</a></li>
+          <li><a href="#tabularDiv">Tabular Output</a></li>
+        </ul>
+
+        <div class="leftHolderDiv" id="loadingDiv"> <!-- If you change the 960 layout, you MUST update the height of this element in normalLanding.css. It has been set explicitly because Google Maps requires it -->
+          <img src='images/pages/common/loading.gif' alt="Please wait..."/>
+        </div> <!-- end of loadingDiv -->
+
+        <div class="leftHolderDiv" id="mapDiv"> <!-- If you change the 960 layout, you MUST update the height of this element in normalLanding.css. It has been set explicitly because Google Maps requires it -->
+          <center>
+            <h5 style='color:gray'>Please select a query from the 'Map Queries' tab on the left to get started.</h5> <!-- Rahul - Preserving uniformity with graphDiv and tabularDiv -->
+          </center>		
+        </div> <!-- end of mapDiv -->
+
+        <div class="leftHolderDiv" id="graphDiv">
+          <center>
+            <h5 style='color:gray; padding: 17px 23px'>Please select a query from the 'Graph Queries' tab on the left to get started.</h5> <!-- the padding is here so that this initial message looks the same as it does for the tabular output tab. We have set padding to 0px on graphDiv so that our graphs have as much space as possible. We don't want that to change but we do want this initial message to look the same. So we add the same padding as tabularDiv has but only for this initial message. -->
+          </center>
+        </div> <!-- end of graphDiv -->
+
+        <div class="leftHolderDiv" id="tabularDiv">
+          <center>
+            <h5 style='color:gray'>Please select a query from the 'Tabular Queries' tab on the left to get started.</h5>
+          </center>
+        </div> <!-- end of tabularDiv -->
+
+      </div> <!-- end of tabs -->
+    </div> <!-- end of mapGraphDiv -->
+
+  </div> <!-- end of container_2 -->
+
+  <div class="clear"></div>
+  <div id="graphTest"></div>
+</body>
+
+</html>

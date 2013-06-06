@@ -1,0 +1,49 @@
+body {
+	background-image:url('../../../images/pages/loginPage/background.png');
+	background-repeat: no-repeat;
+	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
+	color: #222;
+	height: auto;
+	font-family:Arial,Helvetica,sans-serif;
+}
+input{
+	width: 90%;
+	padding: 10px 0px;
+	font-weight: bold;
+	text-align:center;
+}
+button{
+	padding: 10px 0px;
+	width: 90%;
+}
+div.title {
+	font-size: 30px;
+	padding-left: 5px;
+	padding-top: 10px;
+}
+div.title:hover{
+	cursor: hand;cursor: pointer;
+}
+.borderbottom{
+	border-style:solid;
+	border-width:0 0 2px 0;
+}
+.bordertop{
+	border-style:solid;
+	border-width:2px 0 0 0;
+}
+#dialog{
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+}
+h1{
+	font-size: 34px;
+	color:#000;
+}
+h2{
+	font-size: 30px;
+	color:#333;
+}
